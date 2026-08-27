@@ -108,7 +108,9 @@ export default async function handler(request) {
     // Download URLs include `name`; do not apply the player bootstrap range.
     // Applying bytes=0-65535 here makes the browser save only a 64 KB file.
     const isDownloadRequest = Boolean(name);
-    const range = requestedRange || (isMediaHost && isVideoMedia && !isSubtitleMedia && !isDownloadRequest ? INITIAL_RANGE : null);
+    const range = isDownloadRequest
+      ? null
+      : (requestedRange || (isMediaHost && isVideoMedia && !isSubtitleMedia ? INITIAL_RANGE : null));
     const directHeaders = {
       'User-Agent': 'okhttp/4.12.0',
       Referer: SITE_ORIGIN,
