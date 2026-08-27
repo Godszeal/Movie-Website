@@ -78,8 +78,12 @@ function copyMediaHeaders(upstream, baseHeaders, name) {
     const value = upstream.headers.get(source);
     if (value) headers.set(target, value);
   }
-  if (name) headers.set('Content-Disposition', `attachment; filename="${safeFilename(name)}"`);
-  headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+  if (name) {
+    headers.set('Content-Disposition', `attachment; filename="${safeFilename(name)}"`);
+    headers.set('Cache-Control', 'no-store');
+  } else {
+    headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+  }
   return headers;
 }
 
@@ -121,7 +125,8 @@ export default async function handler(request) {
 
     let upstream;
     try {
-      upstream = await fetchWithTimeout(targetUrl, { method: request.method, headers: directHeaders, redirect: 'follow' }, isMediaHost && isVideoMedia ? 4500 : 15000);
+      const upstreamTimeout = isMediaHost && isVideoMedia && !isDownloadRequest ? 4500 : 15000;
+      upstream = await fetchWithTimeout(targetUrl, { method: request.method, headers: directHeaders, redirect: 'follow' }, upstreamTimeout);
     } catch (error) {
       if (!isMediaHost) throw error;
     }
