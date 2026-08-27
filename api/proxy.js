@@ -105,7 +105,10 @@ export default async function handler(request) {
     const isVideoMedia = /\.(?:mp4|m4v|webm|mov|m3u8|mpd)$/.test(path);
     const isSubtitleMedia = /\.(?:srt|vtt|ass|ssa|ttml|dfxp)$/.test(path);
     const requestedRange = request.headers.get('range');
-    const range = requestedRange || (isMediaHost && isVideoMedia && !isSubtitleMedia ? INITIAL_RANGE : null);
+    // Download URLs include `name`; do not apply the player bootstrap range.
+    // Applying bytes=0-65535 here makes the browser save only a 64 KB file.
+    const isDownloadRequest = Boolean(name);
+    const range = requestedRange || (isMediaHost && isVideoMedia && !isSubtitleMedia && !isDownloadRequest ? INITIAL_RANGE : null);
     const directHeaders = {
       'User-Agent': 'okhttp/4.12.0',
       Referer: SITE_ORIGIN,
