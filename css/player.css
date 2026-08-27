@@ -1,0 +1,442 @@
+.cs-player-wrap {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+}
+
+.cs-player {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  display: block;
+  cursor: pointer;
+}
+
+.cs-player-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  padding: 40px 20px 16px;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.cs-player-wrap:hover .cs-player-controls,
+.cs-player-wrap.controls-visible .cs-player-controls {
+  opacity: 1;
+}
+
+.cs-player-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.cs-player-progress:hover {
+  height: 6px;
+}
+
+.cs-player-progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 100ms linear;
+  position: relative;
+}
+
+.cs-player-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  transition: transform var(--transition-fast);
+}
+
+.cs-player-progress:hover .cs-player-progress-fill::after {
+  transform: translateY(-50%) scale(1);
+}
+
+.cs-player-buffered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  width: 0%;
+}
+
+.cs-player-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cs-player-left,
+.cs-player-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-player-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cs-player-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cs-player-time {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-family);
+  white-space: nowrap;
+}
+
+.cs-player-volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-player-volume-slider {
+  width: 0;
+  overflow: hidden;
+  transition: width var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.cs-player-volume:hover .cs-player-volume-slider,
+.cs-player-volume.active .cs-player-volume-slider {
+  width: 80px;
+}
+
+.cs-player-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cs-player-volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.cs-player-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cs-player-big-play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(229, 9, 20, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  opacity: 0;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+}
+
+.cs-player-wrap.paused .cs-player-big-play {
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cs-player-big-play:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+.cs-player-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: cs-spin 0.8s linear infinite;
+  display: none;
+}
+
+.cs-player-wrap.loading .cs-player-loading {
+  display: block;
+}
+
+@keyframes cs-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.cs-player-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-muted);
+  display: none;
+}
+
+.cs-player-wrap.error .cs-player-error {
+  display: block;
+}
+
+.cs-player-error i {
+  font-size: 48px;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cs-speed-menu {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 8px 0;
+  display: none;
+  min-width: 120px;
+  box-shadow: var(--shadow-elevated);
+  z-index: 10;
+}
+
+.cs-speed-menu.open {
+  display: block;
+}
+
+.cs-speed-item {
+  padding: 8px 16px;
+  color: var(--color-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-align: center;
+}
+
+.cs-speed-item:hover,
+.cs-speed-item.active {
+  background: rgba(229, 9, 20, 0.2);
+  color: var(--color-primary);
+}
+
+.cs-subtitle-menu {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 8px 0;
+  display: none;
+  min-width: 160px;
+  box-shadow: var(--shadow-elevated);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cs-subtitle-menu.open {
+  display: block;
+}
+
+.cs-subtitle-item {
+  padding: 8px 16px;
+  color: var(--color-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-align: left;
+}
+
+.cs-subtitle-item:hover,
+.cs-subtitle-item.active {
+  background: rgba(229, 9, 20, 0.2);
+  color: var(--color-primary);
+}
+
+.cs-player-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-player-fullscreen .cs-player {
+  max-height: 100vh;
+  width: 100%;
+}
+
+.cs-player-fullscreen .cs-player-controls {
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 40px 24px;
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+  }
+
+.cs-player-fullscreen .cs-player-progress {
+  height: 5px;
+  margin-bottom: 16px;
+}
+
+.cs-player-fullscreen .cs-player-btn {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.cs-player-fullscreen .cs-player-time {
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .cs-player-controls {
+    padding: 30px 12px 12px;
+  }
+
+  .cs-player-big-play {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .cs-player-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .cs-player-volume-slider {
+    display: none;
+  }
+
+  .cs-speed-menu,
+  .cs-subtitle-menu {
+    right: 12px;
+    left: 12px;
+    min-width: auto;
+  }
+}
+
+/* Touch-friendly responsive player */
+.cs-media-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.cs-player-wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
+.cs-player-row { gap: 8px; }
+.cs-player-left, .cs-player-right { min-width: 0; }
+.cs-player-btn { flex: 0 0 auto; }
+.cs-player-controls { padding-left: clamp(12px, 2vw, 24px); padding-right: clamp(12px, 2vw, 24px); }
+
+@media (hover: none), (pointer: coarse) {
+  .cs-player-controls { opacity: 1; transform: translateY(0); }
+  .cs-player-wrap:not(.paused) .cs-player-center { opacity: .35; }
+}
+
+@media (max-width: 640px) {
+  .cs-player-wrap { border-radius: 8px; }
+  .cs-player-row { align-items: center; flex-wrap: wrap; }
+  .cs-player-left { flex: 1 1 100%; justify-content: center; }
+  .cs-player-right { width: 100%; justify-content: center; flex-wrap: wrap; gap: 6px; }
+  .cs-player-btn { width: 36px; height: 36px; }
+  .cs-player-time { font-size: 12px; }
+  .cs-player-progress { height: 6px; }
+  .cs-media-heading .cs-btn { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-player-controls, .cs-player-center { transition: none; }
+}
+
+.cs-download-btn { width: auto; min-width: 42px; padding: 0 10px; gap: 6px; }
+.cs-download-label { font-size: 12px; }
+.cs-download-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+@media (max-width: 640px) {
+  .cs-download-btn { min-width: 36px; padding: 0 8px; }
+  .cs-download-label { display: none; }
+}
+
+/* Mobile player fit: keep controls readable and prevent compressed rows. */
+@media (max-width: 640px) {
+  .cs-player-container, .cs-player-wrap { width: 100%; max-width: 100%; }
+  .cs-player-controls { padding: 34px 10px 10px; }
+  .cs-player-row { flex-wrap: wrap; align-items: center; gap: 8px; }
+  .cs-player-left { flex: 1 1 100%; min-width: 0; }
+  .cs-player-right { width: 100%; justify-content: space-between; gap: 4px; }
+  .cs-player-btn { width: 38px; height: 38px; flex: 0 0 38px; }
+  .cs-player-btn.cs-download-btn { width: auto; min-width: 86px; padding: 0 10px; border-radius: 8px; gap: 5px; }
+  .cs-download-label { display: inline; font-size: 11px; }
+  .cs-player-time { font-size: 12px; }
+  .cs-media-heading { width: 100%; }
+  .cs-media-title { font-size: clamp(16px, 4.5vw, 20px); }
+  .cs-episode-picker { width: 100%; overflow: hidden; }
+  .cs-season-tabs { max-width: 100%; padding-bottom: 10px; }
+  .cs-season-tab { min-height: 40px; padding: 9px 12px; }
+  .cs-episode-options { grid-template-columns: 1fr; }
+  .cs-episode-option { min-height: 44px; }
+}
+
+@media (max-width: 380px) {
+  .cs-player-controls { padding-left: 7px; padding-right: 7px; }
+  .cs-player-right { gap: 2px; }
+  .cs-player-btn { width: 34px; height: 34px; flex-basis: 34px; font-size: 14px; }
+  .cs-player-btn.cs-download-btn { min-width: 78px; padding: 0 7px; }
+  .cs-download-label { font-size: 10px; }
+}

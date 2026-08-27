@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-allow-theme-toggle="false" data-animations="true" data-glassmorphism="true">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="Watch movies and TV series on CineMind." />
+  <meta name="robots" content="noindex, follow" />
+  <title>Watch - CineMind</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=quality-modal-3" />
+  <link rel="stylesheet" href="css/styles.css?v=quality-modal-3" />
+  <link rel="stylesheet" href="css/responsive.css?v=quality-modal-3" />
+  <link rel="stylesheet" href="css/player.css?v=quality-modal-3" />
+</head>
+<body>
+  <nav class="cs-nav" id="navbar">
+    <div class="cs-nav-left">
+      <a href="index.html" class="cs-logo" data-site-name>CineMind</a>
+      <ul class="cs-nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html?type=movie">Movies</a></li>
+        <li><a href="search.html?type=series">Series</a></li>
+      </ul>
+    </div>
+    <div class="cs-nav-right">
+      <button class="cs-nav-icon-btn" id="back-to-details" aria-label="Back to details">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="cs-main" id="main-content">
+    <section class="cs-section cs-page-section">
+      <div class="cs-container cs-player-container">
+        <div id="watch-loading" class="cs-page-loading" style="display: block;">
+          <div class="cs-player-wrap">
+            <div class="cs-player-loading"></div>
+          </div>
+        </div>
+
+        <div id="watch-error" style="display: none;">
+          <div class="cs-error-state">
+            <i class="fas fa-exclamation-circle"></i>
+            <h3>Unable to load this content</h3>
+            <p>The video could not be loaded. Please try again later.</p>
+            <a href="index.html" class="cs-btn cs-btn-primary" style="margin-top: 20px;"><i class="fas fa-home"></i> Back Home</a>
+          </div>
+        </div>
+
+        <div id="watch-content" style="display: none;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cs-footer" id="footer">
+    <div class="cs-footer-bottom">
+      <p id="footer-text">© 2026 CineMind. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="cs-toast-container"></div>
+
+  <script src="js/config.js?v=quality-modal-3"></script>
+  <script src="js/app.js?v=quality-modal-3"></script>
+  <script src="js/utils.js?v=quality-modal-3"></script>
+  <script src="js/api.js?v=quality-modal-3"></script>
+  <script src="js/components.js?v=quality-modal-3"></script>
+  <script src="js/player.js?v=quality-modal-3"></script>
+</body>
+</html>

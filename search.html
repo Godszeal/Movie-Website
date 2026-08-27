@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-allow-theme-toggle="false" data-animations="true" data-glassmorphism="true">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="Search movies and TV series on CineMind." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Search - CineMind" />
+  <meta property="og:description" content="Search movies and TV series." />
+  <meta property="og:type" content="website" />
+  <title>Search - CineMind</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=quality-modal-3" />
+  <link rel="stylesheet" href="css/styles.css?v=quality-modal-3" />
+  <link rel="stylesheet" href="css/responsive.css?v=quality-modal-3" />
+</head>
+<body>
+  <nav class="cs-nav" id="navbar">
+    <div class="cs-nav-left">
+      <a href="index.html" class="cs-logo" data-site-name>CineMind</a>
+      <ul class="cs-nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html?type=movie">Movies</a></li>
+        <li><a href="search.html?type=series">Series</a></li>
+        <li><a href="search.html?section=trending">Trending</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+      </ul>
+    </div>
+    <div class="cs-nav-right">
+      <div class="cs-search-box">
+        <i class="fas fa-search cs-search-icon"></i>
+        <input type="text" class="cs-search-input" id="nav-search-input" placeholder="Search movies, series..." autocomplete="off" />
+        <div id="nav-search-suggestions" class="cs-search-suggestions"></div>
+      </div>
+      <button class="cs-nav-icon-btn" id="watchlist-nav-btn" aria-label="Watchlist">
+        <i class="fas fa-bookmark"></i>
+      </button>
+      <button class="cs-mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="cs-main" id="main-content">
+    <section class="cs-section cs-page-section">
+      <div class="cs-container">
+        <div class="cs-text-center" style="margin-bottom: 32px;">
+          <h1 class="cs-section-title" style="font-size: 32px; margin-bottom: 8px;">Search</h1>
+          <p style="color: var(--color-muted);" id="search-query-display"></p>
+        </div>
+
+        <div id="popular-searches-container"></div>
+
+        <div id="search-suggestions-container" style="position: relative; max-width: 600px; margin: 0 auto 32px;">
+          <div class="cs-search-box" style="width: 100%;">
+            <i class="fas fa-search cs-search-icon"></i>
+            <input type="text" class="cs-search-input" id="search-page-input" placeholder="Search movies, series..." style="width: 100%;" autocomplete="off" />
+          </div>
+          <div id="search-page-suggestions" class="cs-search-suggestions"></div>
+        </div>
+
+        <div id="search-loading" class="cs-page-loading" style="display: none;">
+          <div class="cs-carousel" style="overflow: visible;">
+            <div class="cs-carousel-track" style="flex-wrap: wrap; gap: 16px;">
+              <div id="search-skeleton-cards" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-results"></div>
+        <div id="search-pagination"></div>
+        <div id="search-error"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cs-footer" id="footer">
+    <div class="cs-footer-content">
+      <div class="cs-footer-brand">
+        <div class="cs-logo" data-site-name>CineMind</div>
+        <p data-site-description>Discover and stream the latest movies and TV series.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="cs-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search.html?type=movie">Movies</a></li>
+          <li><a href="search.html?type=series">Series</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul class="cs-footer-links">
+          <li><a href="watchlist.html">Watchlist</a></li>
+          <li><a href="search.html">Search</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cs-footer-bottom">
+      <p id="footer-text">© 2026 CineMind. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="cs-toast-container"></div>
+
+  <script src="js/config.js?v=quality-modal-3"></script>
+  <script src="js/app.js?v=quality-modal-3"></script>
+  <script src="js/utils.js?v=quality-modal-3"></script>
+  <script src="js/api.js?v=quality-modal-3"></script>
+  <script src="js/components.js?v=quality-modal-3"></script>
+  <script src="js/search.js?v=quality-modal-3"></script>
+</body>
+</html>

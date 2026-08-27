@@ -1,0 +1,374 @@
+@media (max-width: 1024px) {
+  .cs-nav {
+    padding: 0 24px;
+  }
+
+  .cs-nav-links {
+    display: none;
+  }
+
+  .cs-nav-links.mobile-open {
+    display: flex !important;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(20, 20, 20, 0.98);
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+  }
+
+  .cs-search-input {
+    width: 200px;
+  }
+
+  .cs-search-input:focus {
+    width: 220px;
+  }
+
+  .cs-mobile-menu-btn {
+    display: flex;
+  }
+
+  .cs-hero-content {
+    left: 24px;
+    right: 24px;
+    max-width: none;
+  }
+
+  .cs-hero-title {
+    font-size: 40px;
+  }
+
+  .cs-section {
+    padding: 30px 24px;
+  }
+
+  .cs-footer-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-nav {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .cs-nav-links.mobile-open {
+    top: 60px;
+  }
+
+  .cs-logo {
+    font-size: 20px;
+  }
+
+  .cs-search-box {
+    display: none;
+  }
+
+  .cs-hero {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .cs-hero-content {
+    left: 16px;
+    right: 16px;
+    bottom: 12%;
+  }
+
+  .cs-hero-title {
+    font-size: 32px;
+  }
+
+  .cs-hero-desc {
+    font-size: 14px;
+    display: none;
+  }
+
+  .cs-hero-meta {
+    font-size: 13px;
+  }
+
+  .cs-hero-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cs-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+  }
+
+  .cs-section {
+    padding: 24px 16px;
+  }
+
+  .cs-section-title {
+    font-size: 20px;
+  }
+
+  .cs-movie-card {
+    width: 140px;
+  }
+
+  .cs-card-title {
+    font-size: 13px;
+  }
+
+  .cs-card-info {
+    padding: 8px 2px 0;
+  }
+
+  .cs-carousel-track {
+    gap: 12px;
+  }
+
+  .cs-section-header {
+    margin-bottom: 14px;
+  }
+
+  .cs-carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .cs-footer {
+    padding: 40px 16px 20px;
+  }
+
+  .cs-pagination {
+    gap: 6px;
+  }
+
+  .cs-page-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .cs-details-content {
+    flex-direction: column;
+    padding: 0 16px 40px;
+  }
+
+  .cs-details-poster {
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .cs-details-title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .cs-details-meta {
+    justify-content: center;
+  }
+
+  .cs-details-desc {
+    font-size: 14px;
+  }
+
+  .cs-details-actions {
+    justify-content: center;
+  }
+
+  .cs-episode-thumb {
+    width: 100px;
+    height: 56px;
+  }
+
+  .cs-episode-title {
+    font-size: 13px;
+  }
+
+  .cs-watchlist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-hero {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  .cs-hero-title {
+    font-size: 26px;
+  }
+
+  .cs-movie-card {
+    width: 120px;
+  }
+
+  .cs-section {
+    padding: 20px 12px;
+  }
+
+  .cs-card-title {
+    font-size: 12px;
+  }
+
+  .cs-player-controls {
+    padding: 30px 12px 12px;
+  }
+
+  .cs-player-big-play {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .cs-player-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .cs-player-volume-slider {
+    display: none;
+  }
+
+  .cs-speed-menu,
+  .cs-subtitle-menu {
+    right: 12px;
+    left: 12px;
+    min-width: auto;
+  }
+}
+
+/* Responsive navigation hardening */
+@media (max-width: 1024px) {
+  .cs-nav { position: relative; min-height: 68px; }
+  .cs-nav-left, .cs-nav-right { min-width: 0; }
+  .cs-nav-right { gap: 6px; }
+  .cs-mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+  }
+  .cs-mobile-menu-btn:hover,
+  .cs-mobile-menu-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.16);
+    outline: none;
+  }
+  .cs-mobile-menu-btn span { transform-origin: center; }
+  .cs-mobile-menu-btn.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .cs-mobile-menu-btn.is-open span:nth-child(2) { opacity: 0; }
+  .cs-mobile-menu-btn.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .cs-nav-links.mobile-open {
+    display: flex !important;
+    max-height: calc(100vh - 68px);
+    overflow-y: auto;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  }
+  .cs-nav-links.mobile-open a {
+    display: block;
+    width: 100%;
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+  .cs-nav-links.mobile-open a:hover,
+  .cs-nav-links.mobile-open a:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-nav { padding: 0 12px; }
+  .cs-nav-left { flex: 1 1 auto; }
+  .cs-nav-right { flex: 0 0 auto; }
+  .cs-nav-icon-btn, .cs-mobile-menu-btn { width: 42px; height: 42px; }
+  .cs-hero { min-height: 360px; }
+  .cs-section-title { max-width: calc(100vw - 96px); }
+  .cs-carousel-track { padding-bottom: 6px; overscroll-behavior-x: contain; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-mobile-menu-btn span { transition: none; }
+}
+
+
+/* Details page mobile fit */
+@media (max-width: 640px) {
+  .cs-details-hero { min-height: 0; padding-top: 60px; }
+  .cs-details-content { width: 100%; max-width: 100%; padding: 28px 16px 34px; gap: 18px; }
+  .cs-details-poster { width: min(168px, 48vw); }
+  .cs-details-info { width: 100%; min-width: 0; }
+  .cs-details-title { font-size: clamp(25px, 8vw, 32px); line-height: 1.12; overflow-wrap: anywhere; }
+  .cs-details-meta { flex-wrap: wrap; gap: 7px 12px; font-size: 12px; }
+  .cs-details-desc { font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; }
+  .cs-details-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .cs-details-actions .cs-btn { width: 100%; min-height: 44px; padding: 11px 14px; }
+  .cs-details-episodes { margin-top: 28px; }
+  .cs-episode-row { grid-template-columns: 1fr; gap: 7px; }
+  .cs-episode-btn { min-height: 76px; gap: 10px; padding: 9px; }
+  .cs-episode-thumb { width: 92px; height: 54px; }
+  .cs-episode-play { width: 34px; height: 34px; }
+  .cs-episode-download { min-height: 42px; }
+  .cs-cast-scroll { margin-right: -16px; padding-right: 16px; }
+}
+
+@media (max-width: 380px) {
+  .cs-details-content { padding-left: 12px; padding-right: 12px; }
+  .cs-details-title { font-size: 25px; }
+  .cs-episode-thumb { width: 82px; height: 50px; }
+  .cs-episode-info { min-width: 0; }
+}
+
+
+/* Final cross-page mobile fit pass */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+.cs-page, .cs-page-section, .cs-container, .cs-section, .cs-main, main { min-width: 0; max-width: 100%; }
+.cs-nav-left, .cs-nav-right, .cs-details-info, .cs-card-info, .cs-episode-info { min-width: 0; }
+.cs-card-title, .cs-details-desc, .cs-episode-title, .cs-episode-desc { overflow-wrap: anywhere; }
+
+@media (max-width: 768px) {
+  .cs-nav { width: 100%; max-width: 100vw; }
+  .cs-nav-left { overflow: hidden; }
+  .cs-logo { flex: 0 1 auto; max-width: 45vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cs-nav-right { margin-left: auto; }
+  .cs-hero-content, .cs-details-content { box-sizing: border-box; }
+  .cs-hero-actions, .cs-details-actions { width: 100%; max-width: 100%; }
+  .cs-btn { max-width: 100%; white-space: normal; }
+  .cs-carousel, .cs-carousel-track, .cs-cast-scroll, .cs-episode-items { max-width: 100%; }
+  .cs-episode-items { overflow-x: auto; overflow-y: hidden; }
+  .cs-episode-row { min-width: 0; }
+  .cs-media-details-panel { max-width: 100%; box-sizing: border-box; overflow: hidden; }
+  .cs-subtitle-list, .cs-subtitle-chip { min-width: 0; }
+  .cs-subtitle-chip span { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
+@media (max-width: 480px) {
+  .cs-nav { gap: 6px; }
+  .cs-logo { font-size: clamp(17px, 5vw, 21px); }
+  .cs-nav-icon-btn, .cs-mobile-menu-btn { flex: 0 0 40px; width: 40px; height: 40px; }
+  .cs-page-section, .cs-page-loading, .cs-page-state { padding-left: 12px; padding-right: 12px; }
+  .cs-details-hero { background-position: center top; }
+  .cs-details-poster { max-width: 52vw; }
+  .cs-details-title { max-width: 100%; }
+  .cs-section-heading { max-width: 100%; }
+  .cs-section-heading h3 { font-size: 18px; }
+  .cs-media-availability { gap: 10px; }
+  .cs-subtitle-list { gap: 6px; }
+  .cs-episode-subtitle-panel { padding-inline: 0; }
+  .cs-episode-subtitle-links .cs-subtitle-chip { flex: 1 1 130px; justify-content: center; }
+}

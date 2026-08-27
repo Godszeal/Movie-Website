@@ -1,0 +1,13 @@
+{
+  "name": "cinemind",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8080 --directory .",
+    "proxy": "node proxy-server.js",
+    "start": "node proxy-server.js & python3 -m http.server 8080 --directory ."
+  },
+  "description": "CineMind - Movie & TV Series Streaming Website",
+  "author": "Godszeal",
+  "license": "MIT"
+}

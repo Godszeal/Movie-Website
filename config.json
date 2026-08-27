@@ -1,0 +1,113 @@
+{
+  "site": {
+    "name": "CineMind",
+    "shortName": "Cine",
+    "description": "Discover and stream the latest movies and TV series.",
+    "url": "https://yourdomain.com",
+    "logo": "/assets/logo.png",
+    "favicon": "/assets/favicon.svg",
+    "defaultTitle": "CineMind - Stream Movies & TV Series",
+    "language": "en",
+    "timezone": "Africa/Lagos"
+  },
+  "branding": {
+    "primaryColor": "#e50914",
+    "secondaryColor": "#141414",
+    "accentColor": "#e50914",
+    "backgroundColor": "#141414",
+    "surfaceColor": "#1f1f1f",
+    "textColor": "#ffffff",
+    "mutedTextColor": "#b3b3b3",
+    "borderRadius": "12px"
+  },
+  "theme": {
+    "mode": "dark",
+    "styleId": 1,
+    "allowThemeToggle": false,
+    "animations": true,
+    "glassmorphism": true
+  },
+  "api": {
+    "baseUrl": "https://zstlab.cyou/api",
+    "proxyUrl": "/api/proxy",
+    "apiKey": "",
+    "search": {
+      "subjectType": "ALL",
+      "page": 1,
+      "perPage": 24
+    },
+    "trending": {
+      "page": 0,
+      "perPage": 18
+    },
+    "recommendations": {
+      "page": 1,
+      "perPage": 24
+    },
+    "searchSuggestions": {
+      "perPage": 10,
+      "minimumCharacters": 2,
+      "debounce": 350
+    }
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "url": "index.html"
+    },
+    {
+      "label": "Movies",
+      "url": "search.html?type=movie"
+    },
+    {
+      "label": "Series",
+      "url": "search.html?type=series"
+    },
+    {
+      "label": "Trending",
+      "url": "search.html?section=trending"
+    },
+    {
+      "label": "Watchlist",
+      "url": "watchlist.html"
+    }
+  ],
+  "features": {
+    "search": true,
+    "suggestions": true,
+    "popularSearches": true,
+    "trending": true,
+    "hotMoviesSeries": true,
+    "recommendations": true,
+    "watchlist": true,
+    "sharing": true,
+    "download": true,
+    "subtitles": true,
+    "videoPlayer": true
+  },
+  "player": {
+    "autoplay": false,
+    "controls": true,
+    "defaultVolume": 1,
+    "defaultPlaybackRate": 1,
+    "rememberPlaybackPosition": true
+  },
+  "footer": {
+    "enabled": true,
+    "text": "© 2026 {siteName}. All rights reserved.",
+    "links": []
+  },
+  "social": {
+    "telegram": "",
+    "whatsapp": "",
+    "youtube": "",
+    "twitter": "",
+    "facebook": "",
+    "instagram": ""
+  },
+  "seo": {
+    "titleTemplate": "{title} | {siteName}",
+    "defaultDescription": "Discover and stream the latest movies and TV series.",
+    "keywords": ["movies", "tv series", "streaming", "watch online", "cinema"]
+  }
+}
