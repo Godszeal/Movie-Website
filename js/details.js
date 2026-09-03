@@ -252,7 +252,7 @@ async function loadMediaAvailability(subject, title) {
       <div class="cs-media-availability">
         ${downloadVariants.length ? `<button type="button" id="media-download-btn" class="cs-btn cs-btn-primary cs-media-download"><i class="fas fa-download"></i> Choose Download Quality <small>(${downloadVariants.length})</small></button>` : '<span class="cs-media-unavailable">Download unavailable for this title.</span>'}
         <div class="cs-subtitle-list"><strong><i class="fas fa-closed-captioning"></i> Subtitles</strong>
-          ${subtitleTracks.length ? subtitleTracks.map(track => { const subtitleUrl = utils.withSubtitleFilename ? utils.withSubtitleFilename(track.url, title, season, episode, track.label || track.language) : track.url; return `<a class="cs-subtitle-chip" href="${escapeHtml(subtitleUrl)}" download title="Download ${escapeHtml(track.label)} subtitle"><span>${escapeHtml(track.label)}</span><small>${escapeHtml(track.language)}</small><i class="fas fa-download"></i></a>`; }).join('') : '<span class="cs-media-unavailable">No subtitles available.</span>'}
+          ${subtitleTracks.length ? subtitleTracks.map(track => { const subtitleUrl = utils.withSubtitleFilename ? utils.withSubtitleFilename(track.url, title, season, episode, track.label || track.language, track.format) : track.url; return `<a class="cs-subtitle-chip" href="${escapeHtml(subtitleUrl)}" download title="Download ${escapeHtml(track.label)} subtitle"><span>${escapeHtml(track.label)}</span><small>${escapeHtml(track.language)}</small><i class="fas fa-download"></i></a>`; }).join('') : '<span class="cs-media-unavailable">No subtitles available.</span>'}
         </div>
       </div>`;
     panel.querySelector('#media-download-btn')?.addEventListener('click', event => downloadEpisode(currentSubjectId, currentDetailPath, season, episode, event.currentTarget));
@@ -360,7 +360,7 @@ async function loadEpisodeSubtitles(subject, title, row, season, episode, detail
       panel.innerHTML = '<span class="cs-media-unavailable">No subtitles are available for this episode.</span>';
       return;
     }
-    panel.innerHTML = `<div class="cs-episode-subtitle-heading"><i class="fas fa-closed-captioning"></i> Subtitle languages</div><div class="cs-episode-subtitle-links">${tracks.map(track => { const href = utils.withSubtitleFilename ? utils.withSubtitleFilename(track.url, title, season, episode, track.label || track.language) : track.url; return `<a href="${escapeHtml(href)}" download class="cs-subtitle-chip" title="Download ${escapeHtml(track.label)} subtitle"><span>${escapeHtml(track.label)}</span><small>${escapeHtml(track.language)}</small><i class="fas fa-download"></i></a>`; }).join('')}</div>`;
+    panel.innerHTML = `<div class="cs-episode-subtitle-heading"><i class="fas fa-closed-captioning"></i> Subtitle languages</div><div class="cs-episode-subtitle-links">${tracks.map(track => { const href = utils.withSubtitleFilename ? utils.withSubtitleFilename(track.url, title, season, episode, track.label || track.language, track.format) : track.url; return `<a href="${escapeHtml(href)}" download class="cs-subtitle-chip" title="Download ${escapeHtml(track.label)} subtitle"><span>${escapeHtml(track.label)}</span><small>${escapeHtml(track.language)}</small><i class="fas fa-download"></i></a>`; }).join('')}</div>`;
   } catch (err) {
     console.error('Episode subtitles error:', err);
     panel.innerHTML = '<span class="cs-media-unavailable">Subtitle languages could not be loaded. Try again.</span>';

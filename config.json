@@ -30,6 +30,7 @@
   "api": {
     "baseUrl": "https://zstlab.cyou/api",
     "proxyUrl": "/api/proxy",
+    "providerProxyUrl": "https://api.zstlab.cyou/api/proxy",
     "apiKey": "",
     "search": {
       "subjectType": "ALL",
